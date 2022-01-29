@@ -15,7 +15,8 @@ import {UserRoles} from "./roles/user-roles.model";
     providers: [AppService],
     imports: [
         ConfigModule.forRoot({
-            envFilePath: `.${process.env.NODE_ENV}.env`
+            envFilePath: `.${process.env.NODE_ENV}.env`,
+            isGlobal: true
         }),
         SequelizeModule.forRoot({
             dialect: 'postgres',
@@ -25,7 +26,7 @@ import {UserRoles} from "./roles/user-roles.model";
             password: process.env.POSTGRES_PASSWORD,
             database: process.env.POSTGRES_DB,
             models: [User, Role, UserRoles],
-            autoLoadModels: true // creating tables throw models
+            autoLoadModels: false // creating tables throw models
         }),
         UsersModule,
         RolesModule,
