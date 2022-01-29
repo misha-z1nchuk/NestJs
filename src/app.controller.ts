@@ -7,8 +7,5 @@ export class AppController{
 
     constructor(private appService: AppService) {}
 
-    @Get('/users')
-    getUser(){
-        return this.appService.getUsers();
-    }
+
 }
