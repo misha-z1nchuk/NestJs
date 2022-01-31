@@ -10,7 +10,14 @@ import {ConfigModule} from "@nestjs/config";
 describe('UserController', function () {
     let userController : UsersController;
 
-    const mockUserService = {};
+    const mockUserService = {
+        createUser: jest.fn(dto => {
+            return{
+                id: 5,
+                ...dto
+            }
+        })
+    };
 
     beforeEach(async () => {
         const module: TestingModule =await Test.createTestingModule({
@@ -39,6 +46,15 @@ describe('UserController', function () {
         expect(userController).toBeDefined();
     });
 
+    it('should create user', () => {
+
+        expect(userController.create({email: "fdаffdsfаfdsf@gmail.com", password: "fаdsfdsf"})).toEqual({
+            id: expect.any(Number),
+            email: expect.any(String),
+            password: expect.any(String),
+        })
+
+    })
 
 });
 
