@@ -6,4 +6,8 @@ export class AppService{
     getUsers(){
         return [{id: 1, name: "dfdfd"}]
     }
+
+    getHello() {
+        return {message: "get Hello"}
+    }
 }
